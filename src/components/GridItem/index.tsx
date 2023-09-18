@@ -1,4 +1,4 @@
-import {Level, calculateImc } from '../../helpers/imc' 
+ import {Level, calculateImc } from '../../helpers/imc' 
 import styles from './GridItem.module.css'
 import upImage from '../../assets/up.png'
 import downImage from '../../assets/down.png'
@@ -14,6 +14,15 @@ export const GridItem = ({item} : Props) => {
             { item.icon === 'up'   && <img src={upImage} alt="" width="30"/> }   
             { item.icon === 'down' && <img src={downImage} alt="" width="30"/>}
             </div>  
+
+            <div className={styles.gridTitle}> {item.title} </div>
+            <div className={styles.gridInfo}>
+             <>
+                IMC está entre <strong>{item.imc[0]}</strong> e <strong>{item.imc[1]}</strong>
+             </>
+            </div>
+            {item.yourImc &&
+            <div className={styles.yourImc}> Seu IMC é {item.yourImc.toFixed(2)}</div>}
         </div>
     )
 }
